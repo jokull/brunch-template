@@ -1,0 +1,124 @@
+// Based on getskeleton.com
+
+columns = 16
+column-width = 57px // Ends up as 1232px layout
+gutter-width = 20px
+
+column(span)
+  width ((column-width + gutter-width) * span) - gutter-width
+
+offset(span)
+  padding-left ((column-width + gutter-width) * span)
+  
+layout()
+  width ((column-width + gutter-width) * columns)
+  .one.column
+    column(1)
+  .two.columns
+    column(2)
+  .three.columns
+    column(3)
+  .four.columns
+    column(4)
+  .five.columns
+    column(5)
+  .six.columns
+    column(6)
+  .seven.columns
+    column(7)
+  .eight.columns
+    column(8)
+  .nine.columns
+    column(9)
+  .ten.columns
+    column(10)
+  .eleven.columns
+    column(11)
+  .twelve.columns
+    column(12)
+  .thirteen.columns
+    column(13)
+  .forteen.columns
+    column(14)
+  .fifteen.columns
+    column(15)
+  .sixteen.columns
+    column(16)
+  
+  .one-third.column
+    column(columns/3)
+  .two-third.column
+    column(2*columns/3)
+
+  .offset-by-one
+    offset(1)
+  .offset-by-two
+    offset(2)
+  .offset-by-three
+    offset(3)
+  .offset-by-four
+    offset(4)
+  .offset-by-five
+    offset(6)
+  .offset-by-six
+    offset(6)
+  .offset-by-seven
+    offset(7)
+  .offset-by-eight
+    offset(8)
+  .offset-by-nine
+    offset(9)
+  .offset-by-ten
+    offset(10)
+  .offset-by-eleven
+    offset(11)
+  .offset-by-twelve
+    offset(12)
+  .offset-by-thirteen
+    offset(13)
+  .offset-by-forteen
+    offset(14)
+  .offset-by-fifteen
+    offset(15)
+  
+
+
+/* Base Grid
+================================================== */
+
+.container
+  position relative
+  margin 0 auto
+  padding 0
+  layout()
+  
+.column, .columns
+  float left
+  display inline
+  margin-left gutter-width * 0.5
+  margin-right gutter-width * 0.5
+  .alpha
+    margin-left 0
+  .omega
+    margin-right 0
+  
+.row
+  margin-bottom gutter-width
+  clearfix()
+
+
+/* 960px */
+
+column-width = 40px
+@media only screen and (min-width: 960px) and (max-width: 1331px)
+  .container
+    layout()
+
+/* Handheld */
+
+@media only screen and (max-width: 959px)
+  .container
+    width 460px + gutter-width
+    .column, .columns
+      width 440px
+      float none
