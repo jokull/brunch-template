@@ -5,3 +5,83 @@
 
 global-reset()
 @import 'grid'
+
+body
+  font-family "ff-meta-serif-web-pro", serif
+  font-smoothing antialiased
+  -webkit-font-smoothing antialiased
+
+$fontsize = 16px
+$lineheight = 20px
+
+.slideshow
+  position relative
+  margin-bottom $base_lineheight
+  .carousel
+    position relative
+    overflow hidden
+    .slides
+      transition margin 400ms ease
+      position relative
+      li
+        display block
+        margin 0
+        img
+          display block
+    nav
+      a
+        transition all 400ms ease
+        position absolute
+        z-index 200
+        top 0
+        background url("../images/") no-repeat
+        opacity 0.2
+      a.next
+        right 30px
+        width 50%
+        background-position 100% 50%
+      a.previous
+        left 30px
+        width 20%
+        background-position 0% 50%
+      a.disabled
+        opacity 0
+      a.next
+        background-image url("../images/arrow-light-next.png")
+      a.previous
+        background-image url("../images/arrow-light-previous.png")
+    nav.dark
+      a.next
+        background-image url("../images/arrow-dark-next.png")
+      a.previous
+        background-image url("../images/arrow-dark-previous.png")
+  nav.slides
+    position absolute
+    z-index 250
+    bottom 18px
+    right 20px
+    opacity 0.5
+    a
+      display block
+      float left
+      background url("../images/slideshow-bullet.png") 19px 0
+      width 19px
+      height 23px
+      margin 0 2px 0
+    a.selected
+      background-position 0 0
+    
+  .carousel:hover
+    nav
+      a
+        opacity 1
+      a.disabled
+        opacity 0
+    
+.slideshow.ready
+  .carousel
+    .slides
+      li
+        position absolute
+        z-index 100
+        top 0
