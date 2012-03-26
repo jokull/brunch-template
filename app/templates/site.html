@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block title_tag %}Holster{% endblock %} ▸ Fur Trade</title>
+  <meta name="description" content="{% block description_tag %}{% endblock %}">
+  <meta name="author" content="">
+  
+  {% block opengraph %}
+  {% endblock opengraph %}
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.url }}">
+  <meta property="og:site_name" content="">
+  <meta property="fb:admins" content="563494127">
+  
+  <link rel="stylesheet" href="{{ static("stylesheets/app.css") }}">
+  <link rel="shortcut icon" href="{{ static("favicon.ico") }}">
+
+  <script src="{{ static("javascripts/vendor.js") }}"></script>
+  <script src="{{ static("javascripts/app.js") }}"></script>
+  <script>require('application').initialize();</script>
+  
+  {#<script type="text/javascript" src="http://use.typekit.com/smc8sli.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>#}
+  
+  {#<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24416578-3']);
+    _gaq.push(['_setDomainName', '{{ request.host }}']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>#}
+
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a class="furtrade four columns" href="/">
+        <img src="{{ static('images/header-logo-furtrade.png') }}" alt="Fur Trade"></a>
+      {% block header_logo %}
+      {% endblock %}
+      <div class="contact four columns">
+        <ul>
+          <li><a href="http://twitter.com/furtradeis">Twitter</a></li>
+          <li><a href="http://blog.furtrade.is/">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  
+  {% block content %}
+  {% endblock %}
+  
+  <footer>
+    <div class="container">
+      <a class="four columns furtrade" href="/"><img src="{{ static('images/footer-logo-furtrade.png') }}"></a>
+      {% block footer_logo %}
+      {% endblock %}
+      <div class="four columns contact">
+        <ul>
+          <li><a href="mailto:info@furtrade.is">info@furtrade.is</a></li>
+          <li>+354 691 2550</li>
+        </ul>
+      </div>
+      <div class="sixteen columns">
+        <div class="like-button">
+          {% set like_url = url_for(section, _external=True) %}
+          <iframe src="//www.facebook.com/plugins/like.php?href={{ urlquote(like_url) }}&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=30&amp;appId=318873381506686" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:30px;" allowTransparency="true"></iframe>
+        </div>
+        <div class="pin-it-button">
+          {% block pin_it %}
+          {% endblock pin_it %}
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+
+
+
+

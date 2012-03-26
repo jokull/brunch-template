@@ -7,20 +7,49 @@ global-reset()
 @import 'grid'
 @import 'slideshow'
 
+$fontsize = 19px
+$lineheight = 26px
+
 body
-  font-family "ff-meta-serif-web-pro", serif
+  color #111
   font-smoothing antialiased
   -webkit-font-smoothing antialiased
 
-$fontsize = 16px
-$lineheight = 22px
+body
+input
+select
+textarea
+button
+  font-family helvetica, arial, serif
 
-header
+a
+a:hover
+a:active
+a:visited
+  color #000
 
-footer
+  
+// === TYPOGRAPHY ===
 
-section#introduction
+$leadmargin = 0.5
 
-section#products
+h1
+  font-size $fontsize * 2
+  margin-bottom @font-size * $leadmargin
 
-section#features
+h2
+  font-size $fontsize * 1.5
+  margin-bottom @font-size * $leadmargin
+
+h3
+  font-size $fontsize * 1.3
+  margin-bottom @font-size * $leadmargin
+
+h4, p
+  font-size $fontsize * 1
+  margin-bottom @font-size * $leadmargin
+  line-height $lineheight * 1
+
+h5
+  font-size $fontsize * 0.8
+  margin-bottom @font-size * $leadmargin

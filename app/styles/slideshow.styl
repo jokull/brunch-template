@@ -1,6 +1,5 @@
 .slideshow
   position relative
-  margin-bottom $lineheight
   .carousel
     position relative
     overflow hidden
@@ -14,12 +13,12 @@
           display block
     nav
       a
-        transition all 400ms ease
+        transition all 600ms ease
         position absolute
         z-index 200
         top 0
         background url("../images/") no-repeat
-        opacity 0.2
+        opacity 0.6
       a.next
         right 30px
         width 50%
@@ -55,11 +54,11 @@
     a.selected
       background-position 0 0
     
-  .carousel:hover
+  .carousel
     nav
-      a
+      a:hover
         opacity 1
-      a.disabled
+      a.disabled:hover
         opacity 0
     
 .slideshow.ready

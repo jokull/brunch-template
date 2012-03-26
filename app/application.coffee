@@ -1,4 +1,5 @@
-{SlidesView, Slides} = require 'slideshow'
+# {SlidesView, Slides} = require 'slideshow'
+Facebook = require 'facebook'
 
 Application =
   
@@ -6,16 +7,25 @@ Application =
   collections: {}
   models: {}
   
-  initialize: ->
-    app = @
-    ($ ".slideshow").each (i) ->
-      collection = new Slides
-      view = new SlidesView 
-        collection: collection
-        el: @
-      view.addDOMSlides()
-      collection.select collection.first()
+  constructor: ->
+    ($ 'document').ready =>
+      @initialize this
+      Backbone.history.start()
       
+  initialize: (options) ->
+    # Init slideshows or whatever
+    
+    facebook = new Facebook 
+      appId: '277988345614501'
+      scope: 'email'
+    facebook.loadSDK()
+    
+    setTimeout(->
+      ($ ".login").bind "click", (event) ->
+        console.log "HEY"
+        event.preventDefault()
+        facebook.triggerLogin()
+    , 300)
 
 # Freeze the object
 Object.freeze? Application
