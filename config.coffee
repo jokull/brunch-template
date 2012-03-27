@@ -24,7 +24,7 @@ exports.config =
           'vendor/scripts/zepto-0.8.js',
           'vendor/scripts/underscore-1.3.1.js',
           'vendor/scripts/underscore.deferred.js'
-          'vendor/scripts/backbone-0.9.1.js'
+          'vendor/scripts/backbone-0.9.2.js'
         ]
 
     stylesheets:
