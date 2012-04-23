@@ -1,18 +1,14 @@
 # {SlidesView, Slides} = require 'slideshow'
 Facebook = require 'facebook'
 
-Application =
+class Application
   
   views: {}
   collections: {}
   models: {}
+  routers: {}
   
-  constructor: ->
-    ($ 'document').ready =>
-      @initialize this
-      Backbone.history.start()
-      
-  initialize: (options) ->
+  ready: ->
     # Init slideshows or whatever
     
     facebook = new Facebook 
@@ -20,15 +16,19 @@ Application =
       scope: 'email'
     facebook.loadSDK()
     
-    setTimeout(->
-      ($ ".login").bind "click", (event) ->
-        console.log "HEY"
-        event.preventDefault()
-        facebook.triggerLogin()
-    , 300)
+    ($ ".login").bind "click", (event) ->
+      event.preventDefault()
+      facebook.triggerLogin "loginbutton"
+    
+    facebook.getLoginStatus()
+      
+  initialize: (options) ->
+    $ =>
+      @ready this
+      Backbone.history.start() if Object.keys(@routers).length
 
 # Freeze the object
 Object.freeze? Application
 
-module.exports = Application
+module.exports = new Application
     

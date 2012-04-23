@@ -17,7 +17,7 @@ class Facebook extends Backbone.View
     utils.deferMethods
       deferred: this
       methods: [
-        'parse', 'subscribe', 'postToGraph', 'getAccumulatedInfo', 'getInfo'
+        'parse', 'subscribe', 'postToGraph', 'getAccumulatedInfo', 'getInfo', 'getLoginStatus'
       ]
       onDeferral: @loadSDK
 
@@ -71,9 +71,9 @@ class Facebook extends Backbone.View
     # Listen to logout on the Facebook
     @subscribe 'auth.logout', @facebookLogout
     # Listen to likes
-    @subscribe 'edge.create', @processLike
+    # @subscribe 'edge.create', @processLike
     # Listen to comments
-    @subscribe 'comment.create', @processComment
+    # @subscribe 'comment.create', @processComment
 
   # Check whether the Facebook SDK has been loaded
   isLoaded: ->
@@ -127,12 +127,12 @@ class Facebook extends Backbone.View
     authResponse = response.authResponse
 
     if authResponse
-      @trigger 'loginSuccessful', {provider: this, loginContext}
+      @trigger 'loginSuccessful', {provider: this}
       @publishSession authResponse
       @getUserData()
 
     else
-      @trigger 'loginAbort', {provider: this, loginContext}
+      @trigger 'loginAbort', {provider: this}
 
       # Get the login status again (forced) because the user might be
       # logged in anyway. This might happen when the user grants access
@@ -154,7 +154,7 @@ class Facebook extends Backbone.View
     authResponse = response.authResponse
 
     if authResponse
-      @trigger 'loginSuccessful', {provider: this, loginContext}
+      @trigger 'loginSuccessful', {provider: this}
       @trigger 'loginSuccessfulThoughAborted', {
         provider: this, loginContext
       }
@@ -163,7 +163,7 @@ class Facebook extends Backbone.View
 
     else
       # Login failed ultimately
-      @trigger 'loginFail', {provider: this, loginContext}
+      @trigger 'loginFail', {provider: this}
 
   # Handler for the FB auth.logout event
   facebookLogout: (response) =>
