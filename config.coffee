@@ -21,8 +21,8 @@ exports.config =
         before: [
           'vendor/scripts/console-helper.js',
           'vendor/scripts/modernizr-2.5.3.js',
-          'vendor/scripts/zepto-0.8.js',
-          'vendor/scripts/underscore-1.3.1.js',
+          'vendor/scripts/zepto-1.0rc1.js',
+          'vendor/scripts/underscore-1.3.3.js',
           'vendor/scripts/underscore.deferred.js'
           'vendor/scripts/backbone-0.9.2.js'
         ]
